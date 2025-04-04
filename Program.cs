@@ -33,9 +33,9 @@ class Program
     foreach (string filePath in Directory.GetFiles(directoryPath, "*.txt"))
     {
       string fileContent = File.ReadAllText(filePath, Encoding.UTF8);
+
       fileContent = FixSpellingErrors(fileContent);
       fileContent = FormatPhoneNumbers(fileContent);
-      
       File.WriteAllText(filePath, fileContent, Encoding.UTF8);
       
       Console.WriteLine($"Файл {Path.GetFileName(filePath)} обработан.");
@@ -51,7 +51,6 @@ class Program
         content = content.Replace(incorrectWord, wordPair.Key);
       }
     }
-    
     return content;
   }
 
